@@ -27,8 +27,3 @@ const render = function(){
 store.subscribe(() => {
   render();
 })
-
-
-
-store.dispatch({type: 'INCREMENT'});
-store.dispatch({type: 'INCREMENT'});
