@@ -20,10 +20,13 @@ const counter = (state = 0, action) => {
 const { createStore } = Redux;
 const store = createStore(counter);
 
-const Counter = function(props){
+const Counter = function({value, onIncrement, onDecrement}){
   return (
     <div>
-      {props.value}
+      {value}
+      <br />
+      <button onClick={onIncrement}>Increment</button>
+      <button onClick={onDecrement}>Decrement</button>
     </div>
   );
 }
@@ -32,6 +35,12 @@ const render = function(){
   ReactDOM.render(
     <Counter 
     value={store.getState()} 
+    onIncrement={ () =>
+      store.dispatch({type: "INCREMENT"})
+    }
+    onDecrement={ () =>
+      store.dispatch({type: "DECREMENT"})
+    }
     />,
     document.getElementById('display')
   );
