@@ -20,10 +20,25 @@ const counter = (state = 0, action) => {
 const { createStore } = Redux;
 const store = createStore(counter);
 
+const Counter = function(props){
+  return (
+    <div>
+      {props.value}
+    </div>
+  );
+}
+
 const render = function(){
-  document.getElementById('display').innerHTML = store.getState();
+  ReactDOM.render(
+    <Counter 
+    value={store.getState()} 
+    />,
+    document.getElementById('display')
+  );
 }
 
 store.subscribe(() => {
   render();
 })
+
+render();
